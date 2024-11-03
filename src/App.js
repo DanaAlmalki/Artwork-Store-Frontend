@@ -11,43 +11,67 @@ import WishListPage from "./pages/WishListPage.js";
 import NotFound from "./pages/NotFound.js";
 
 function App() {
-  const productUrl = "http://localhost:5125/api/v1/artworks";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [input, setInput] = useState("");
+  const [wishList, setWishList] = useState([]);
+
+  // Pagination
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   const [productResponse, setProductResponse] = useState({
     artworks: [],
     totalCount: 0,
   });
 
-  //const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [input, setInput] = useState("");
-  const [wishList, setWishList] = useState([]);
+  let pageSize = 2;
+  let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}`;
+
+  if (input) {
+    productUrl += `&Search=${input}`;
+  }
+  if (sort) {
+    productUrl += `&SortOrder=${sort}`;
+  }
+  if (minPrice !== 0) {
+    productUrl += `&LowPrice=${minPrice}`;
+  }
+  if (maxPrice !== 10000) {
+    productUrl += `&HighPrice=${maxPrice}`;
+  }
 
   function getData() {
     axios
       .get(productUrl)
       .then((response) => {
         setProductResponse(response.data);
+        setLoading(false);
         //console.log(response);
         //console.log(response.data);
       })
       .catch((error) => {
         setError(error);
-        //setLoading(false);
+        setLoading(false);
       });
   }
 
-  /*useEffect(() => {
+  useEffect(() => {
     getData();
-  }, []);*/
+  }, [page]);
 
-  /*if (loading) {
+  if (loading) {
     return (
       <div className="loading">
         <CircularProgress />
       </div>
     );
-  }*/
+  }
 
   if (error) {
     return <div>{error.message}</div>;
@@ -64,7 +88,18 @@ function App() {
         },
         {
           path: "/products",
-          element: <ProductsPage response={productResponse} />,
+          element: (
+            <ProductsPage
+              response={productResponse}
+              setInput={setInput}
+              input={input}
+              wishList={wishList}
+              setWishList={setWishList}
+              page={page}
+              pageSize={pageSize}
+              handleChange={handleChange}
+            />
+          ),
         },
         {
           path: "/wishList",
