@@ -63,7 +63,7 @@ function App() {
 
   useEffect(() => {
     getData();
-  }, [page]);
+  }, [page, input, sort, maxPrice, minPrice]);
 
   if (loading) {
     return (
@@ -91,8 +91,8 @@ function App() {
           element: (
             <ProductsPage
               response={productResponse}
-              setInput={setInput}
               input={input}
+              setInput={setInput}
               wishList={wishList}
               setWishList={setWishList}
               page={page}

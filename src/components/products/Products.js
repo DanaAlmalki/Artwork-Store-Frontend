@@ -5,15 +5,37 @@ import Product from "./Product";
 import ProductsPagination from "./ProductsPagination";
 
 export default function Products(prop) {
-  const { response, wishList, setWishList, page, pageSize, handleChange } =
-    prop;
+  const {
+    response,
+    input,
+    setInput,
+    wishList,
+    setWishList,
+    page,
+    pageSize,
+    handleChange,
+  } = prop;
+
   const { artworks, totalCount } = response;
   console.log(artworks);
   console.log(totalCount);
 
+  function onChangeHandler(event) {
+    setInput(event.target.value);
+  }
+
   return (
     <div className="productsContainer">
-      <p>Products</p>
+      <div className="search">
+        <h2>Products</h2>
+        <form>
+          <input
+            type="text"
+            placeholder="Enter product name"
+            onChange={onChangeHandler}
+          ></input>
+        </form>
+      </div>
       <div className="products">
         {artworks.map((productItem) => {
           return (

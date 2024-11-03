@@ -3,8 +3,8 @@ import Products from "../components/products/Products.js";
 export default function ProductsPage(prop) {
   const {
     response,
-    setInput,
     input,
+    setInput,
     wishList,
     setWishList,
     page,
@@ -17,6 +17,8 @@ export default function ProductsPage(prop) {
       <h1>Products page</h1>
       <Products
         response={response}
+        input={input}
+        setInput={setInput}
         wishList={wishList}
         setWishList={setWishList}
         page={page}
