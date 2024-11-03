@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 import "./Products.css";
 import Product from "./Product";
@@ -20,20 +21,27 @@ export default function Products(prop) {
   console.log(artworks);
   console.log(totalCount);
 
+  const [searchText, setSearchText] = useState("");
   function onChangeHandler(event) {
-    setInput(event.target.value);
+    setSearchText(event.target.value);
+  }
+
+  function handleSearch(event) {
+    event.preventDefault();
+    setInput(searchText);
   }
 
   return (
     <div className="productsContainer">
       <div className="search">
         <h2>Products</h2>
-        <form>
+        <form onSubmit={handleSearch}>
           <input
             type="text"
             placeholder="Enter product name"
             onChange={onChangeHandler}
           ></input>
+          <button type="submit">Search</button>
         </form>
       </div>
       <div className="products">
