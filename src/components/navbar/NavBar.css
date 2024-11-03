@@ -1,1 +1,3 @@
-/* styling for NavBar here */
+.navbarContainer {
+  outline: 1px solid red;
+}
