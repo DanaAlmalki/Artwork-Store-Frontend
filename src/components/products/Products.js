@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import "./Products.css";
 import Product from "./Product";
+import Form from "./Form";
 import ProductsPagination from "./ProductsPagination";
 
 export default function Products(prop) {
@@ -10,6 +11,11 @@ export default function Products(prop) {
     response,
     input,
     setInput,
+    setSort,
+    setMinPrice,
+    setMaxPrice,
+    defaultMinPrice,
+    defaultMaxPrice,
     wishList,
     setWishList,
     page,
@@ -21,29 +27,18 @@ export default function Products(prop) {
   console.log(artworks);
   console.log(totalCount);
 
-  const [searchText, setSearchText] = useState("");
-  function onChangeHandler(event) {
-    setSearchText(event.target.value);
-  }
-
-  function handleSearch(event) {
-    event.preventDefault();
-    setInput(searchText);
-  }
-
   return (
     <div className="productsContainer">
-      <div className="search">
-        <h2>Products</h2>
-        <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            placeholder="Enter product name"
-            onChange={onChangeHandler}
-          ></input>
-          <button type="submit">Search</button>
-        </form>
-      </div>
+      <h2>Products</h2>
+      <Form
+        input={input}
+        setInput={setInput}
+        setSort={setSort}
+        setMinPrice={setMinPrice}
+        setMaxPrice={setMaxPrice}
+        defaultMinPrice={defaultMinPrice}
+        defaultMaxPrice={defaultMaxPrice}
+      />
       <div className="products">
         {artworks.map((productItem) => {
           return (

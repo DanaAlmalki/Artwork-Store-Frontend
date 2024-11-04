@@ -17,6 +17,8 @@ function App() {
   const [wishList, setWishList] = useState([]);
 
   // Pagination
+  const defaultMinPrice = 0;
+  const defaultMaxPrice = 10000;
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("");
   const [minPrice, setMinPrice] = useState(0);
@@ -93,6 +95,11 @@ function App() {
               response={productResponse}
               input={input}
               setInput={setInput}
+              setSort={setSort}
+              setMinPrice={setMinPrice}
+              setMaxPrice={setMaxPrice}
+              defaultMinPrice={defaultMinPrice}
+              defaultMaxPrice={defaultMaxPrice}
               wishList={wishList}
               setWishList={setWishList}
               page={page}

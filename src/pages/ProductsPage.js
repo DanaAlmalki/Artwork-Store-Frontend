@@ -5,6 +5,11 @@ export default function ProductsPage(prop) {
     response,
     input,
     setInput,
+    setSort,
+    setMinPrice,
+    setMaxPrice,
+    defaultMinPrice,
+    defaultMaxPrice,
     wishList,
     setWishList,
     page,
@@ -19,6 +24,11 @@ export default function ProductsPage(prop) {
         response={response}
         input={input}
         setInput={setInput}
+        setSort={setSort}
+        setMinPrice={setMinPrice}
+        setMaxPrice={setMaxPrice}
+        defaultMinPrice={defaultMinPrice}
+        defaultMaxPrice={defaultMaxPrice}
         wishList={wishList}
         setWishList={setWishList}
         page={page}
