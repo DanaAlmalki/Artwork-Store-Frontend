@@ -30,7 +30,7 @@ function App() {
     totalCount: 0,
   });
 
-  let pageSize = 2;
+  let pageSize = 3;
   let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}`;
 
   if (input) {
