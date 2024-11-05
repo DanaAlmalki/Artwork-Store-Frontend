@@ -1,22 +1,23 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import PriceRange from "./PriceRange";
+import Sort from "./Sort.js";
 
 export default function Form(prop) {
   const {
-    input,
     setInput,
     setSort,
+    defaultSort,
     setMinPrice,
     setMaxPrice,
     defaultMinPrice,
     defaultMaxPrice,
   } = prop;
 
-  const [tempMin, setTempMin] = useState(0);
-  const [tempMax, setTempMax] = useState(10000);
+  const [tempMin, setTempMin] = useState(defaultMinPrice);
+  const [tempMax, setTempMax] = useState(defaultMaxPrice);
   const [searchText, setSearchText] = useState("");
+  const [sortValue, setSortValue] = useState(defaultSort);
 
   function onChangeHandler(event) {
     setSearchText(event.target.value);
@@ -25,6 +26,7 @@ export default function Form(prop) {
   function handleSearch(event) {
     event.preventDefault();
     setInput(searchText);
+    setSort(sortValue);
     setMinPrice(tempMin);
     setMaxPrice(tempMax);
   }
@@ -44,6 +46,7 @@ export default function Form(prop) {
           defaultMinPrice={defaultMinPrice}
           defaultMaxPrice={defaultMaxPrice}
         />
+        <Sort sortValue={sortValue} setSortValue={setSortValue} />
         <button type="submit">Search</button>
       </form>
     </div>

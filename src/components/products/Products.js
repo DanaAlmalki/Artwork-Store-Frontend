@@ -9,9 +9,9 @@ import ProductsPagination from "./ProductsPagination";
 export default function Products(prop) {
   const {
     response,
-    input,
     setInput,
     setSort,
+    defaultSort,
     setMinPrice,
     setMaxPrice,
     defaultMinPrice,
@@ -31,9 +31,9 @@ export default function Products(prop) {
     <div className="productsContainer">
       <h2>Products</h2>
       <Form
-        input={input}
         setInput={setInput}
         setSort={setSort}
+        defaultSort={defaultSort}
         setMinPrice={setMinPrice}
         setMaxPrice={setMaxPrice}
         defaultMinPrice={defaultMinPrice}

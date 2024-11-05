@@ -3,9 +3,9 @@ import Products from "../components/products/Products.js";
 export default function ProductsPage(prop) {
   const {
     response,
-    input,
     setInput,
     setSort,
+    defaultSort,
     setMinPrice,
     setMaxPrice,
     defaultMinPrice,
@@ -22,9 +22,9 @@ export default function ProductsPage(prop) {
       <h1>Products page</h1>
       <Products
         response={response}
-        input={input}
         setInput={setInput}
         setSort={setSort}
+        defaultSort={defaultSort}
         setMinPrice={setMinPrice}
         setMaxPrice={setMaxPrice}
         defaultMinPrice={defaultMinPrice}

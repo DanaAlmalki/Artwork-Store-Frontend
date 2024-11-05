@@ -20,10 +20,12 @@ function App() {
   // Pagination
   const defaultMinPrice = 0;
   const defaultMaxPrice = 10000;
+  const defaultSort = "name";
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState("");
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(10000);
+  const [sort, setSort] = useState(defaultSort);
+  const [minPrice, setMinPrice] = useState(defaultMinPrice);
+  const [maxPrice, setMaxPrice] = useState(defaultMaxPrice);
+
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -33,14 +35,11 @@ function App() {
     totalCount: 0,
   });
 
-  let pageSize = 2;
-  let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}`;
+  const pageSize = 2;
+  let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
 
   if (input) {
     productUrl += `&Search=${input}`;
-  }
-  if (sort) {
-    productUrl += `&SortOrder=${sort}`;
   }
   if (minPrice !== 0) {
     productUrl += `&LowPrice=${minPrice}`;
@@ -65,12 +64,12 @@ function App() {
   }
 
   useEffect(() => {
-    getData();
-  }, [page]);
-
-  useEffect(() => {
     setPage(1);
   }, [input, maxPrice, minPrice, sort]);
+
+  useEffect(() => {
+    getData();
+  }, [page, input, maxPrice, minPrice, sort]);
 
   if (loading) {
     return (
@@ -98,9 +97,9 @@ function App() {
           element: (
             <ProductsPage
               response={productResponse}
-              input={input}
               setInput={setInput}
               setSort={setSort}
+              defaultSort={defaultSort}
               setMinPrice={setMinPrice}
               setMaxPrice={setMaxPrice}
               defaultMinPrice={defaultMinPrice}

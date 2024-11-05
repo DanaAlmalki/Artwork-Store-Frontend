@@ -23,7 +23,7 @@ export default function PriceRange(prop) {
         helperText="Enter the minimum price"
         type="number"
         onChange={onChangeHandlerMinPrice}
-        defaultValue={0}
+        defaultValue={defaultMinPrice}
       />
       <TextField
         id="max-price"
@@ -32,7 +32,7 @@ export default function PriceRange(prop) {
         helperText="Enter the maximum price"
         type="number"
         onChange={onChangeHandlerMaxPrice}
-        defaultValue={10000}
+        defaultValue={defaultMaxPrice}
       />
     </div>
   );
