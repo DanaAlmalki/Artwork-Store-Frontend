@@ -7,6 +7,7 @@ import { CircularProgress } from "@mui/material";
 import LayOut from "./components/layout/LayOut.js";
 import HomePage from "./pages/HomePage.js";
 import ProductsPage from "./pages/ProductsPage.js";
+import ProductDetailPage from "./pages/ProductDetailPage.js";
 import WishListPage from "./pages/WishListPage.js";
 import NotFound from "./pages/NotFound.js";
 
@@ -65,7 +66,7 @@ function App() {
 
   useEffect(() => {
     getData();
-  }, [page, input, sort, maxPrice, minPrice]);
+  }, [page, input, maxPrice, minPrice, sort]);
 
   if (loading) {
     return (
@@ -107,6 +108,10 @@ function App() {
               handleChange={handleChange}
             />
           ),
+        },
+        {
+          path: "/products/:productId",
+          element: <ProductDetailPage />,
         },
         {
           path: "/wishList",

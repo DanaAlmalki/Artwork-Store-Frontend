@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Heart from "@mui/icons-material/Favorite";
 import Snackbar from "@mui/material/Snackbar";
 
@@ -44,6 +44,11 @@ export default function Product(prop) {
           sx={{ color: isFav ? "red" : "#4b4b4bae" }}
         />
       </div>
+      <Link to={`${product.id}`}>
+        <button className="more">
+          <p> Product Detail </p>
+        </button>
+      </Link>
       <div>
         <Snackbar
           open={open}
