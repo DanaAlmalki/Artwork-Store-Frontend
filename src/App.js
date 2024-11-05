@@ -33,7 +33,7 @@ function App() {
     totalCount: 0,
   });
 
-  let pageSize = 3;
+  let pageSize = 2;
   let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}`;
 
   if (input) {
@@ -66,7 +66,11 @@ function App() {
 
   useEffect(() => {
     getData();
-  }, [page, input, maxPrice, minPrice, sort]);
+  }, [page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [input, maxPrice, minPrice, sort]);
 
   if (loading) {
     return (
