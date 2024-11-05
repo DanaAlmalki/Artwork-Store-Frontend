@@ -16,6 +16,9 @@ export default function NavBar() {
         <li>
           <Link to="/wishList">Wish List</Link>
         </li>
+        <li>
+          <Link to="/register">Sign up</Link>
+        </li>
       </ul>
     </nav>
   );

@@ -10,6 +10,8 @@ import ProductsPage from "./pages/ProductsPage.js";
 import ProductDetailPage from "./pages/ProductDetailPage.js";
 import WishListPage from "./pages/WishListPage.js";
 import NotFound from "./pages/NotFound.js";
+import UserRegister from "./components/user/UserRegister.js";
+import UserLogin from "./components/user/UserLogin.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -119,6 +121,14 @@ function App() {
         {
           path: "/wishList",
           element: <WishListPage wishList={wishList} />,
+        },
+        {
+          path: "/register",
+          element: <UserRegister />,
+        },
+        {
+          path: "/login",
+          element: <UserLogin />,
         },
         {
           path: "/*",
