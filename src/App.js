@@ -81,6 +81,7 @@ function App() {
   const [isUserDataLoading, setIsUserDataLoading] = useState(true);
 
   function getUserData() {
+    setIsUserDataLoading(true);
     const token = localStorage.getItem("token");
     axios
       .get("http://localhost:5125/api/v1/users/profile", {
@@ -160,7 +161,7 @@ function App() {
         },
         {
           path: "/login",
-          element: <UserLogin />,
+          element: <UserLogin getUserData={getUserData} />,
         },
         {
           path: "/profile",
@@ -168,7 +169,9 @@ function App() {
             <ProtectedRoute
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
-              element={<UserProfile />}
+              element={
+                <UserProfile userData={userData} setUserData={setUserData} />
+              }
             />
           ),
         },

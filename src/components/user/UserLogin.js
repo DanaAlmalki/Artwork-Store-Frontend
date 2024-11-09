@@ -4,7 +4,8 @@ import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function UserLogin() {
+export default function UserLogin(prop) {
+  const { getUserData } = prop;
   const url = "http://localhost:5125/api/v1/users/signin";
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -47,11 +48,13 @@ export default function UserLogin() {
         if (response.status === 200) {
           console.log(response);
           localStorage.setItem("token", response.data);
-          navigate("/");
         }
       })
+      .then(() => getUserData())
+      .then(() => navigate("/profile"))
       .catch((error) => {
         setLoading(false);
+        console.log(error.response);
         if (error.response) {
           if (error.response.status === 400) {
             if (error.response.data.errors) {
@@ -71,8 +74,8 @@ export default function UserLogin() {
               alert("Invalid login credentials. Please try again.");
             }
           } else {
-            console.error("An error occurred:", error.response.data);
-            alert("An error occurred during login. Please try again.");
+            alert("An error occurred: " + error.response.data);
+            //alert("An error occurred during login. Please try again.");
           }
         } else {
           console.error("Network error:", error);
