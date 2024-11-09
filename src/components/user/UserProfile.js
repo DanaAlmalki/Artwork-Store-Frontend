@@ -99,6 +99,11 @@ export default function UserProfile(prop) {
       });
   };
 
+  function logOutHandler() {
+    localStorage.removeItem("token");
+    setUserData(null);
+  }
+
   return (
     <div>
       <h1>User Profile</h1>
@@ -108,6 +113,9 @@ export default function UserProfile(prop) {
       {userData.role === "Artist" && <p>Description: {userData.description}</p>}
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         Edit Profile
+      </Button>
+      <Button variant="contained" onClick={logOutHandler}>
+        Log out
       </Button>
       <Popover
         id={id}
