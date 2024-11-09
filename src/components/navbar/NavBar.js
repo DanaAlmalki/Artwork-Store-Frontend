@@ -22,6 +22,9 @@ export default function NavBar() {
         <li>
           <Link to="/profile">User Profile</Link>
         </li>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
       </ul>
     </nav>
   );

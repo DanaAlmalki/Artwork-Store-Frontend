@@ -9,12 +9,12 @@ import HomePage from "./pages/HomePage.js";
 import ProductsPage from "./pages/ProductsPage.js";
 import ProductDetailPage from "./pages/ProductDetailPage.js";
 import WishListPage from "./pages/WishListPage.js";
-import NotFound from "./pages/NotFound.js";
-import UserRegister from "./components/user/UserRegister.js";
+import NotFoundPage from "./pages/NotFoundPage.js";
+import UserRegisterPage from "./pages/UserRegisterPage.js";
 import UserLogin from "./components/user/UserLogin.js";
-import UserProfile from "./components/user/UserProfile.js";
+import UserProfilePage from "./pages/UserProfilePage.js";
 import ProtectedRoute from "./components/user/ProtectedRoute.js";
-import { Dashboard } from "@mui/icons-material";
+import DashboardPage from "./pages/DashboardPage.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -157,7 +157,7 @@ function App() {
         },
         {
           path: "/register",
-          element: <UserRegister />,
+          element: <UserRegisterPage />,
         },
         {
           path: "/login",
@@ -170,7 +170,10 @@ function App() {
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
               element={
-                <UserProfile userData={userData} setUserData={setUserData} />
+                <UserProfilePage
+                  userData={userData}
+                  setUserData={setUserData}
+                />
               }
             />
           ),
@@ -181,13 +184,15 @@ function App() {
             <ProtectedRoute
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
-              element={<Dashboard />}
+              shouldCheckAdmin={true}
+              userData={userData}
+              element={<DashboardPage />}
             />
           ),
         },
         {
           path: "/*",
-          element: <NotFound />,
+          element: <NotFoundPage />,
         },
       ],
     },
