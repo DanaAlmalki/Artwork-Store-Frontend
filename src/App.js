@@ -12,6 +12,9 @@ import WishListPage from "./pages/WishListPage.js";
 import NotFound from "./pages/NotFound.js";
 import UserRegister from "./components/user/UserRegister.js";
 import UserLogin from "./components/user/UserLogin.js";
+import UserProfile from "./components/user/UserProfile.js";
+import ProtectedRoute from "./components/user/ProtectedRoute.js";
+import { Dashboard } from "@mui/icons-material";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -73,6 +76,35 @@ function App() {
     getData();
   }, [page, input, maxPrice, minPrice, sort]);
 
+  // user
+  const [userData, setUserData] = useState(null);
+  const [isUserDataLoading, setIsUserDataLoading] = useState(true);
+
+  function getUserData() {
+    const token = localStorage.getItem("token");
+    axios
+      .get("http://localhost:5125/api/v1/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+        setIsUserDataLoading(false);
+      })
+      .catch((error) => {
+        setIsUserDataLoading(false);
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  // protected route
+  let isAuthenticated = userData ? true : false;
+
   if (loading) {
     return (
       <div className="loading">
@@ -129,6 +161,26 @@ function App() {
         {
           path: "/login",
           element: <UserLogin />,
+        },
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              element={<UserProfile />}
+            />
+          ),
+        },
+        {
+          path: "/dashboard",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              element={<Dashboard />}
+            />
+          ),
         },
         {
           path: "/*",

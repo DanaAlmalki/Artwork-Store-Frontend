@@ -44,8 +44,9 @@ export default function UserLogin() {
       .post(url, userInfo)
       .then((response) => {
         setLoading(false);
-        console.log(response.data);
         if (response.status === 200) {
+          console.log(response);
+          localStorage.setItem("token", response.data);
           navigate("/");
         }
       })
