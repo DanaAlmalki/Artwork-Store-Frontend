@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Sort from "./UserSortForm.js";
 import SearchForm from "./SearchForm.js";

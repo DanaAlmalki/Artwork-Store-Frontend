@@ -2,9 +2,9 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
+import UserTable from "./UserTable.js";
 
 import UserSearchForm from "../form/UserSearchForm";
-import UserSortForm from "../form/UserSortForm";
 
 export default function UserDashboard() {
   const [loading, setLoading] = useState(true);
@@ -14,18 +14,14 @@ export default function UserDashboard() {
   const defaultSort = "name";
   const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
   const [sort, setSort] = useState(defaultSort);
-
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
 
   const [userResponse, setUserResponse] = useState({
     users: [],
     totalCount: 0,
   });
 
-  const pageSize = 10;
   let userUrl = `http://localhost:5125/api/v1/Users?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
 
   if (input) {
@@ -54,12 +50,16 @@ export default function UserDashboard() {
   }
 
   useEffect(() => {
+    setLoading(true);
     setPage(1);
-  }, [input, sort]);
+    setLoading(false);
+  }, [pageSize, input, sort]);
 
   useEffect(() => {
+    setLoading(true);
     getData();
-  }, [page, input, sort]);
+    setLoading(false);
+  }, [pageSize, page, input, sort]);
 
   if (loading) {
     return (
@@ -79,6 +79,12 @@ export default function UserDashboard() {
         setInput={setInput}
         setSort={setSort}
         defaultSort={defaultSort}
+      />
+      <UserTable
+        userResponse={userResponse}
+        setPageSize={setPageSize}
+        setPage={setPage}
+        loading={loading}
       />
     </div>
   );
