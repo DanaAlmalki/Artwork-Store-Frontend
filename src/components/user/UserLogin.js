@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function UserLogin(prop) {
-  const { getUserData } = prop;
+  const { userData, getUserData } = prop;
   const url = "http://localhost:5125/api/v1/users/signin";
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -51,7 +51,11 @@ export default function UserLogin(prop) {
         }
       })
       .then(() => getUserData())
-      .then(() => navigate("/profile"))
+      .then(() =>
+        userData.role === "Admin"
+          ? navigate("/dashboard")
+          : navigate("/profile")
+      )
       .catch((error) => {
         setLoading(false);
         console.log(error.response);

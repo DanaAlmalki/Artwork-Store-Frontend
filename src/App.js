@@ -11,7 +11,7 @@ import ProductDetailPage from "./pages/ProductDetailPage.js";
 import WishListPage from "./pages/WishListPage.js";
 import NotFoundPage from "./pages/NotFoundPage.js";
 import UserRegisterPage from "./pages/UserRegisterPage.js";
-import UserLogin from "./components/user/UserLogin.js";
+import UserLoginPage from "./pages/UserLoginPage.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import ProtectedRoute from "./components/user/ProtectedRoute.js";
 import DashboardPage from "./pages/DashboardPage.js";
@@ -121,7 +121,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LayOut wishList={wishList} />,
+      element: (
+        <LayOut
+          wishList={wishList}
+          userData={userData}
+          isAuthenticated={isAuthenticated}
+        />
+      ),
       children: [
         {
           path: "/",
@@ -161,7 +167,9 @@ function App() {
         },
         {
           path: "/login",
-          element: <UserLogin getUserData={getUserData} />,
+          element: (
+            <UserLoginPage userData={userData} getUserData={getUserData} />
+          ),
         },
         {
           path: "/profile",
@@ -186,7 +194,21 @@ function App() {
               isAuthenticated={isAuthenticated}
               shouldCheckAdmin={true}
               userData={userData}
-              element={<DashboardPage />}
+              element={
+                <DashboardPage userData={userData} setUserData={setUserData} />
+              }
+            />
+          ),
+        },
+        {
+          path: "/product-dashboard",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              shouldCheckAdmin={true}
+              userData={userData}
+              element={<ProductDashboardPage />}
             />
           ),
         },

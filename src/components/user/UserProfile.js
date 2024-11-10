@@ -106,7 +106,6 @@ export default function UserProfile(prop) {
 
   return (
     <div>
-      <h1>User Profile</h1>
       <p>Name: {userData.name}</p>
       <p>Email: {userData.email}</p>
       <p>Role: {userData.role}</p>
