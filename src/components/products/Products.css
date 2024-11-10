@@ -1,9 +1,21 @@
 .productsContainer {
   outline: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .search {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.products {
+  outline: 1px solid rgb(255, 36, 171);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
 }

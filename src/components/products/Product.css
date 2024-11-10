@@ -1,1 +1,8 @@
-/* product styling here */
+.product-container {
+  width: 200px;
+}
+
+.product-image img {
+  object-fit: scale-down;
+  width: 100%;
+}

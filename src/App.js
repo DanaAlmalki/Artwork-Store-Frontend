@@ -15,6 +15,8 @@ import UserLoginPage from "./pages/UserLoginPage.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import ProtectedRoute from "./components/user/ProtectedRoute.js";
 import DashboardPage from "./pages/DashboardPage.js";
+import ProductDashboardPage from "./pages/ProductDashboardPage.js";
+import UserDashboardPage from "./pages/UserDashboardPage.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -208,7 +210,24 @@ function App() {
               isAuthenticated={isAuthenticated}
               shouldCheckAdmin={true}
               userData={userData}
-              element={<ProductDashboardPage />}
+              element={
+                <ProductDashboardPage
+                  response={productResponse}
+                  loading={loading}
+                />
+              }
+            />
+          ),
+        },
+        {
+          path: "/user-dashboard",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              shouldCheckAdmin={true}
+              userData={userData}
+              element={<UserDashboardPage />}
             />
           ),
         },

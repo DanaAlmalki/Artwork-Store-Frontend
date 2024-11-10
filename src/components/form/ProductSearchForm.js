@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import PriceRange from "./PriceRange";
-import Sort from "./Sort.js";
+import PriceRange from "./PriceRangeForm.js";
+import Sort from "./ProductSortForm.js";
+import SearchForm from "./SearchForm.js";
 
 export default function Form(prop) {
   const {
@@ -19,10 +20,6 @@ export default function Form(prop) {
   const [searchText, setSearchText] = useState("");
   const [sortValue, setSortValue] = useState(defaultSort);
 
-  function onChangeHandler(event) {
-    setSearchText(event.target.value);
-  }
-
   function handleSearch(event) {
     event.preventDefault();
     setInput(searchText);
@@ -34,12 +31,7 @@ export default function Form(prop) {
   return (
     <div>
       <form onSubmit={handleSearch}>
-        <input
-          id="keyword"
-          type="text"
-          placeholder="Enter product name"
-          onChange={onChangeHandler}
-        ></input>
+        <SearchForm setSearchText={setSearchText} />
         <PriceRange
           setTempMin={setTempMin}
           setTempMax={setTempMax}

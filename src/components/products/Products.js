@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import "./Products.css";
 import Product from "./Product";
-import Form from "./Form";
+import Form from "../form/ProductSearchForm";
 import ProductsPagination from "./ProductsPagination";
 
 export default function Products(prop) {

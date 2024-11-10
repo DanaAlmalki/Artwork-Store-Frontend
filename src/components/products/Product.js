@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import Heart from "@mui/icons-material/Favorite";
 import Snackbar from "@mui/material/Snackbar";
 
+import "../products/Product.css";
+import BlueFire from "../../assets/artworks/BlueFire.jpg";
+
 export default function Product(prop) {
   const { product, wishList, setWishList } = prop;
   const [isFav, setIsFav] = useState(false);
@@ -31,7 +34,10 @@ export default function Product(prop) {
   };
 
   return (
-    <div>
+    <div className="product-container">
+      <div className="product-image">
+        <img src={BlueFire} alt="art work" />
+      </div>
       <div className="title">{product.title}</div>
       <div className="price">${product.price}</div>
       <div className="medium">{product.category.name}</div>
