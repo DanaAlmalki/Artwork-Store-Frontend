@@ -11,6 +11,8 @@ import {
 import Popover from "@mui/material/Popover";
 import axios from "axios";
 
+import "./UserProfile.css";
+
 export default function UserProfile(prop) {
   const { userData, setUserData } = prop;
   const [anchorEl, setAnchorEl] = useState(null);
@@ -105,10 +107,14 @@ export default function UserProfile(prop) {
   }
 
   return (
-    <div>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
-      <p>Role: {userData.role}</p>
+    <div className="user-profile">
+      <h2>{userData.role} profile</h2>
+      <p>
+        <span>Name:</span> {userData.name}
+      </p>
+      <p>
+        <span>Email:</span> {userData.email}
+      </p>
       {userData.role === "Artist" && <p>Description: {userData.description}</p>}
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         Edit Profile

@@ -9,12 +9,13 @@ export default function SearchForm(prop) {
   }
 
   return (
-    <div>
+    <div className="search-form">
       <TextField
         id="keyword"
         label="Search by Email"
         variant="outlined"
         onChange={onChangeHandler}
+        size="small"
       />
     </div>
   );

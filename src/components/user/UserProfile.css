@@ -1,0 +1,15 @@
+.user-profile {
+  padding: 1em;
+}
+
+.user-profile p span {
+  font-weight: bold;
+}
+
+.user-profile button:not(last-of-type) {
+  margin-right: 1em;
+}
+
+.user-profile button {
+  margin-right: 1em;
+}

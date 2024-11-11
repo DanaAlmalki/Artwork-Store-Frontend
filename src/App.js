@@ -15,7 +15,7 @@ import UserLoginPage from "./pages/UserLoginPage.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import ProtectedRoute from "./components/user/ProtectedRoute.js";
 import DashboardPage from "./pages/DashboardPage.js";
-import ProductDashboardPage from "./pages/ProductDashboardPage.js";
+import OrderDashboardPage from "./pages/OrderDashboardPage.js";
 import UserDashboardPage from "./pages/UserDashboardPage.js";
 
 function App() {
@@ -97,6 +97,9 @@ function App() {
       })
       .catch((error) => {
         setIsUserDataLoading(false);
+        if (error.status === 401) {
+          alert("Your session has expired.");
+        }
         console.log(error);
       });
   }
@@ -203,19 +206,14 @@ function App() {
           ),
         },
         {
-          path: "/product-dashboard",
+          path: "/order-dashboard",
           element: (
             <ProtectedRoute
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
               shouldCheckAdmin={true}
               userData={userData}
-              element={
-                <ProductDashboardPage
-                  response={productResponse}
-                  loading={loading}
-                />
-              }
+              element={<OrderDashboardPage />}
             />
           ),
         },

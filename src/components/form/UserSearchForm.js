@@ -4,6 +4,8 @@ import Sort from "./UserSortForm.js";
 import SearchForm from "./SearchForm.js";
 import Button from "@mui/material/Button";
 
+import "../dashboard/UserDashboard.css";
+
 export default function UserSearchForm(prop) {
   const { setInput, setSort, defaultSort } = prop;
 
@@ -17,7 +19,7 @@ export default function UserSearchForm(prop) {
   }
 
   return (
-    <div>
+    <div className="user-search-form">
       <form onSubmit={handleSearch}>
         <SearchForm setSearchText={setSearchText} />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />

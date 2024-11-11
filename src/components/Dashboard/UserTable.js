@@ -10,6 +10,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+import "./UserDashboard.css";
+
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
   { field: "name", headerName: "Name", flex: 1 },
@@ -68,7 +70,7 @@ export default function DataTable(prop) {
   };
 
   return (
-    <div>
+    <div className="user-table">
       <Dialog
         open={open}
         onClose={handleClose}

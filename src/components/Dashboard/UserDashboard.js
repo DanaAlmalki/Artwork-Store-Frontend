@@ -5,6 +5,7 @@ import { CircularProgress } from "@mui/material";
 import UserTable from "./UserTable.js";
 
 import UserSearchForm from "../form/UserSearchForm";
+import "./UserDashboard.css";
 
 export default function UserDashboard() {
   const [loading, setLoading] = useState(true);
@@ -74,7 +75,8 @@ export default function UserDashboard() {
   }
 
   return (
-    <div>
+    <div className="user-dashboard">
+      <h2>Manage Users</h2>
       <UserSearchForm
         setInput={setInput}
         setSort={setSort}

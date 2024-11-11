@@ -17,7 +17,6 @@ export default function NavBar(props) {
         <li>
           <Link to="/wishList">Wish List</Link>
         </li>
-
         {isAuthenticated ? (
           userData.role === "Admin" ? (
             <li>
@@ -29,9 +28,14 @@ export default function NavBar(props) {
             </li>
           )
         ) : (
-          <li>
-            <Link to="/register">Sign up</Link>
-          </li>
+          <>
+            <li>
+              <Link to="/register">Sign up</Link>
+            </li>
+            <li>
+              <Link to="/login">Log in</Link>
+            </li>
+          </>
         )}
       </ul>
     </nav>
