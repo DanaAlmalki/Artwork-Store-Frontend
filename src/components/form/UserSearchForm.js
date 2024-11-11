@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Sort from "./UserSortForm.js";
 import SearchForm from "./SearchForm.js";
+import Button from "@mui/material/Button";
 
 export default function UserSearchForm(prop) {
   const { setInput, setSort, defaultSort } = prop;
@@ -20,7 +21,9 @@ export default function UserSearchForm(prop) {
       <form onSubmit={handleSearch}>
         <SearchForm setSearchText={setSearchText} />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />
-        <button type="submit">Search</button>
+        <Button type="submit" variant="outlined">
+          Search
+        </Button>
       </form>
     </div>
   );

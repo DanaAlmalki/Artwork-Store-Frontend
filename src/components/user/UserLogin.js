@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
@@ -46,16 +46,12 @@ export default function UserLogin(prop) {
       .then((response) => {
         setLoading(false);
         if (response.status === 200) {
-          console.log(response);
+          // Store the token
           localStorage.setItem("token", response.data);
+          // Fetch user data after storing the token
+          getUserData();
         }
       })
-      .then(() => getUserData())
-      .then(() =>
-        userData.role === "Admin"
-          ? navigate("/dashboard")
-          : navigate("/profile")
-      )
       .catch((error) => {
         setLoading(false);
         console.log(error.response);
@@ -79,7 +75,6 @@ export default function UserLogin(prop) {
             }
           } else {
             alert("An error occurred: " + error.response.data);
-            //alert("An error occurred during login. Please try again.");
           }
         } else {
           console.error("Network error:", error);
@@ -87,6 +82,17 @@ export default function UserLogin(prop) {
         }
       });
   }
+
+  useEffect(() => {
+    // Trigger navigation once user data is available
+    if (userData && userData.role) {
+      if (userData.role === "Admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/profile");
+      }
+    }
+  }, [userData, navigate]); // Only trigger effect when userData changes
 
   return (
     <div>

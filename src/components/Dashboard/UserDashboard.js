@@ -81,6 +81,7 @@ export default function UserDashboard() {
         defaultSort={defaultSort}
       />
       <UserTable
+        getData={getData}
         userResponse={userResponse}
         setPageSize={setPageSize}
         setPage={setPage}

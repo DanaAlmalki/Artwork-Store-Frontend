@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@mui/material";
 
 import PriceRange from "./PriceRangeForm.js";
 import Sort from "./ProductSortForm.js";
@@ -39,7 +40,9 @@ export default function Form(prop) {
           defaultMaxPrice={defaultMaxPrice}
         />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />
-        <button type="submit">Search</button>
+        <Button type="submit" variant="outlined">
+          Search
+        </Button>
       </form>
     </div>
   );
