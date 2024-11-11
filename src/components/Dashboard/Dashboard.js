@@ -6,7 +6,7 @@ import "./DashBoard.css";
 export default function Dashboard() {
   return (
     <div className="admin-dashboard">
-      <h2>DashBoard</h2>
+      <h2>Manage</h2>
       <div className="dashboard-elements">
         <Link to="/order-dashboard">
           <div>Orders</div>

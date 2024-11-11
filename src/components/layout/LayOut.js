@@ -1,8 +1,9 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 import NavBar from "../navbar/NavBar";
 import Footer from "../footer/Footer.js";
-import { Outlet } from "react-router-dom";
+import "./LayOut.css";
 
 export default function LayOut(prop) {
   const { wishList, userData, isAuthenticated } = prop;
@@ -13,7 +14,9 @@ export default function LayOut(prop) {
         userData={userData}
         isAuthenticated={isAuthenticated}
       />
-      <Outlet />
+      <div className="layout">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

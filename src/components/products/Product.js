@@ -34,27 +34,28 @@ export default function Product(prop) {
   };
 
   return (
-    <div className="product-container">
-      <div className="product-image">
-        <img src={BlueFire} alt="art work" />
+    <div>
+      <div className="product-container">
+        <img className="product-image" src={BlueFire} alt="art work" />
+        <div className="product-buttons">
+          <Heart
+            className="favIcon"
+            fontSize="large"
+            onClick={() => addToFav(product)}
+            sx={{ color: isFav ? "red" : "#4b4b4bae" }}
+          />
+        </div>
+        <Link className="label" to={`${product.id}`}>
+          <div className="artist">{product.user.name}</div>
+          <div className="title">
+            {product.title}, <span>{product.createdAt.slice(0, 4)}</span>
+          </div>
+          <div className="medium">{product.category.name}</div>
+        </Link>
       </div>
-      <div className="title">{product.title}</div>
-      <div className="price">${product.price}</div>
-      <div className="medium">{product.category.name}</div>
-      <div className="artist">{product.user.name}</div>
-      <div className="favIconContainer">
-        <Heart
-          className="favIcon"
-          fontSize="large"
-          onClick={() => addToFav(product)}
-          sx={{ color: isFav ? "red" : "#4b4b4bae" }}
-        />
-      </div>
-      <Link to={`${product.id}`}>
-        <button className="more">
-          <p> Product Detail </p>
-        </button>
-      </Link>
+
+      {/*<div className="price">${product.price}</div>*/}
+
       <div>
         <Snackbar
           open={open}

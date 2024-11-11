@@ -19,7 +19,6 @@ export default function ProductsPage(prop) {
 
   return (
     <div>
-      <h1>Products page</h1>
       <Products
         response={response}
         setInput={setInput}

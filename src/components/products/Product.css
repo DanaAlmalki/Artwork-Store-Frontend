@@ -1,8 +1,67 @@
 .product-container {
-  width: 200px;
+  width: min-content;
+  position: relative;
+  outline: 1px solid orange;
 }
 
-.product-image img {
-  object-fit: scale-down;
+.product-container:hover .label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-container .label {
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  color: black;
+  background-color: rgb(216, 216, 216);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-container .label:hover {
+  color: rgb(96, 96, 96);
+}
+
+.product-buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.5em;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-container:hover .product-buttons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-image {
+  object-fit: scale-down;
+  max-width: 300px;
+}
+
+.artist {
+  font-weight: bold;
+}
+
+.title {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.title span {
+  font-weight: normal;
+  font-style: normal;
+}
+
+.medium {
+  font-size: smaller;
 }

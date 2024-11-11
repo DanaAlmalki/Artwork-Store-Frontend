@@ -97,9 +97,6 @@ function App() {
       })
       .catch((error) => {
         setIsUserDataLoading(false);
-        if (error.status === 401) {
-          alert("Your session has expired.");
-        }
         console.log(error);
       });
   }
