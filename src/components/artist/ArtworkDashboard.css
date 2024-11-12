@@ -10,7 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   column-gap: 2em;
-  outline: 1px solid orange;
+  margin-bottom: 1em;
 }
 
 .modification-buttons button {

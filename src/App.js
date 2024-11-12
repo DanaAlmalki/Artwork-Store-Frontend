@@ -105,6 +105,28 @@ function App() {
     getUserData();
   }, []);
 
+  // categories
+  const [categories, setCategories] = useState([]);
+  const [isCatLoading, setIsCatLoading] = useState(true);
+
+  function getCategories() {
+    setIsCatLoading(true);
+    axios
+      .get("http://localhost:5125/api/v1/Categories")
+      .then((response) => {
+        setCategories(response.data);
+        setIsCatLoading(false);
+      })
+      .catch((error) => {
+        setIsCatLoading(false);
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   // protected route
   let isAuthenticated = userData ? true : false;
 
@@ -183,6 +205,7 @@ function App() {
                 <UserProfilePage
                   userData={userData}
                   setUserData={setUserData}
+                  categories={categories}
                 />
               }
             />

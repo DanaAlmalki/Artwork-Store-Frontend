@@ -1,25 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
+import { Button, Snackbar } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useState, useEffect } from "react";
-import { Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircleOutline";
 import InspectIcon from "@mui/icons-material/ManageSearch";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 
 import "./ArtworkDashboard.css";
+import ArtworkDetail from "./ArtworkDetail";
 
 export default function ArtworkDashboard(prop) {
-  const { userData } = prop;
+  const { userData, categories } = prop;
   const [artworkResponse, setArtworkResponse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedID, setSelectedID] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null); // To store the selected row's data
+  const [dialogType, setDialogType] = useState(null); // State to track the dialog type (create or modify)
 
   let artworkUrl = `http://localhost:5125/api/v1/Artworks/artist/${userData.id}`;
 
@@ -40,14 +36,13 @@ export default function ArtworkDashboard(prop) {
     return readableFormat;
   }
 
-  function getData() {
+  function getArtistArtwork() {
+    setLoading(true);
     axios
       .get(artworkUrl)
       .then((response) => {
         setArtworkResponse(response.data);
         setLoading(false);
-        console.log(response);
-        //console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +52,7 @@ export default function ArtworkDashboard(prop) {
 
   useEffect(() => {
     setLoading(true);
-    getData();
+    getArtistArtwork();
   }, []);
 
   const rows = artworkResponse;
@@ -99,51 +94,34 @@ export default function ArtworkDashboard(prop) {
     },
   ];
 
-  const [open, setOpen] = useState(false);
+  const handleAddNewArtwork = () => {
+    setDialogType("create"); // Set the dialog type to 'create' for adding a new artwork
+  };
+
+  const handleInspect = () => {
+    const selectedRowData = rows.find((row) => row.id === selectedID[0]);
+    setSelectedRow(selectedRowData);
+    setDialogType("modify"); // Set the dialog type to 'modify' for inspecting the selected artwork
+  };
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   return (
     <div className="artwork-dashboard">
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Delete Artwork?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            This action cannot be reversed and can cause the loss of related
-            information.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button color="error" onClick={() => setOpen(false)}>
-            Delete
-          </Button>
-          <Button onClick={() => setOpen(false)} autoFocus>
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
       <h2>My Artwork</h2>
       <div className="modification-buttons">
-        <Button
-          size="small"
-          className="delete-button"
-          variant="outlined"
-          color="error"
-          startIcon={<DeleteIcon />}
-          disabled={selectedID.length === 0 ? true : false}
-          sx={{ margin: 3 }}
-          onClick={() => setOpen(true)}
-        >
-          Delete Artwork
-        </Button>
         <Button
           size="small"
           variant="outlined"
           startIcon={<InspectIcon />}
           disabled={selectedID.length === 0 ? true : false}
           sx={{ margin: 3 }}
+          onClick={handleInspect}
         >
           Inspect
         </Button>
@@ -152,10 +130,12 @@ export default function ArtworkDashboard(prop) {
           variant="outlined"
           startIcon={<AddCircleIcon />}
           sx={{ margin: 3 }}
+          onClick={handleAddNewArtwork}
         >
           Add new artwork
         </Button>
       </div>
+
       <Paper sx={{ height: 400, width: "100%" }}>
         {loading ? (
           <div>Loading...</div>
@@ -178,6 +158,26 @@ export default function ArtworkDashboard(prop) {
           />
         )}
       </Paper>
+
+      {/* Pass dialogType to ArtworkDetail */}
+      {dialogType && (
+        <ArtworkDetail
+          setSnackbarOpen={setSnackbarOpen}
+          setSnackbarMessage={setSnackbarMessage}
+          getArtistArtwork={getArtistArtwork}
+          categories={categories}
+          artwork={dialogType === "modify" ? selectedRow : null}
+          dialogType={dialogType}
+          onClose={() => setDialogType(null)} // Close dialog when done
+        />
+      )}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message={snackbarMessage}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      />
     </div>
   );
 }

@@ -121,10 +121,20 @@ export default function UserProfile(prop) {
         </p>
       )}
       <div className="user-profile-buttons">
-        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        <Button
+          size="small"
+          aria-describedby={id}
+          variant="contained"
+          onClick={handleClick}
+        >
           Edit Profile
         </Button>
-        <Button variant="contained" onClick={logOutHandler}>
+        <Button
+          color="error"
+          size="small"
+          variant="contained"
+          onClick={logOutHandler}
+        >
           Log out
         </Button>
       </div>
