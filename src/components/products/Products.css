@@ -2,13 +2,9 @@
   outline: 1px solid green;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-
-.search {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+  row-gap: 1em;
+  padding: 1em;
 }
 
 .products {
@@ -18,4 +14,28 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
+}
+
+.products-search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1em;
+  flex-wrap: wrap;
+}
+
+.products-search-form > * {
+  margin: 1em 0;
+}
+
+.products-search-form-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 1em;
 }

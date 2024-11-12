@@ -15,12 +15,11 @@ export default function PriceRange(prop) {
   }
 
   return (
-    <div>
+    <div className="price-range">
       <TextField
         id="min-price"
         label="Min Price"
         variant="standard"
-        helperText="Enter the minimum price"
         type="number"
         onChange={onChangeHandlerMinPrice}
         defaultValue={defaultMinPrice}
@@ -29,7 +28,6 @@ export default function PriceRange(prop) {
         id="max-price"
         label="Max Price"
         variant="standard"
-        helperText="Enter the maximum price"
         type="number"
         onChange={onChangeHandlerMaxPrice}
         defaultValue={defaultMaxPrice}

@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import PriceRange from "./PriceRangeForm.js";
 import Sort from "./ProductSortForm.js";
 import SearchForm from "./SearchForm.js";
+import "../products/Products.css";
 
 export default function Form(prop) {
   const {
@@ -30,9 +31,9 @@ export default function Form(prop) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
-        <SearchForm setSearchText={setSearchText} />
+    <div className="products-search-form-container">
+      <form className="products-search-form" onSubmit={handleSearch}>
+        <SearchForm setSearchText={setSearchText} label={"Search by name"} />
         <PriceRange
           setTempMin={setTempMin}
           setTempMax={setTempMax}
@@ -40,10 +41,10 @@ export default function Form(prop) {
           defaultMaxPrice={defaultMaxPrice}
         />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />
-        <Button type="submit" variant="outlined">
-          Search
-        </Button>
       </form>
+      <Button type="submit" variant="outlined">
+        Search
+      </Button>
     </div>
   );
 }

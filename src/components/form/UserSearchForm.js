@@ -21,7 +21,7 @@ export default function UserSearchForm(prop) {
   return (
     <div className="user-search-form">
       <form onSubmit={handleSearch}>
-        <SearchForm setSearchText={setSearchText} />
+        <SearchForm setSearchText={setSearchText} label={"Search by Email"} />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />
         <Button type="submit" variant="outlined">
           Search

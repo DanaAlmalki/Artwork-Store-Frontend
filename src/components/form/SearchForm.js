@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 
 export default function SearchForm(prop) {
-  const { setSearchText } = prop;
+  const { setSearchText, label } = prop;
 
   function onChangeHandler(event) {
     setSearchText(event.target.value);
@@ -12,7 +12,7 @@ export default function SearchForm(prop) {
     <div className="search-form">
       <TextField
         id="keyword"
-        label="Search by Email"
+        label={label}
         variant="outlined"
         onChange={onChangeHandler}
         size="small"

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import "./Products.css";
 import Product from "./Product";
-import Form from "../form/ProductSearchForm";
+import ProductSearchForm from "../form/ProductSearchForm";
 import ProductsPagination from "./ProductsPagination";
 
 export default function Products(prop) {
@@ -30,7 +30,7 @@ export default function Products(prop) {
   return (
     <div className="productsContainer">
       <h2>Products</h2>
-      <Form
+      <ProductSearchForm
         setInput={setInput}
         setSort={setSort}
         defaultSort={defaultSort}
