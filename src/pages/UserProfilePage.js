@@ -1,16 +1,18 @@
 import React from "react";
 import UserProfile from "../components/user/UserProfile";
+import CustomerProfile from "../components/user/CustomerProfile.js";
+import ArtworkDashboard from "../components/artist/ArtworkDashboard.js";
 
 export default function UserProfilePage(prop) {
   const { userData, setUserData } = prop;
   return (
     <div>
-      {userData.role === "Artist" ? (
-        <h2>Artist Profile</h2>
-      ) : (
-        <h2>User Profile</h2>
-      )}
       <UserProfile userData={userData} setUserData={setUserData} />
+      {userData.role === "Artist" ? (
+        <ArtworkDashboard userData={userData} />
+      ) : (
+        <CustomerProfile />
+      )}
     </div>
   );
 }

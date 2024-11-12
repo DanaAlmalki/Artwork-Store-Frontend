@@ -115,13 +115,20 @@ export default function UserProfile(prop) {
       <p>
         <span>Email:</span> {userData.email}
       </p>
-      {userData.role === "Artist" && <p>Description: {userData.description}</p>}
-      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        Edit Profile
-      </Button>
-      <Button variant="contained" onClick={logOutHandler}>
-        Log out
-      </Button>
+      {userData.role === "Artist" && (
+        <p>
+          <span>Description:</span> {userData.description}
+        </p>
+      )}
+      <div className="user-profile-buttons">
+        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+          Edit Profile
+        </Button>
+        <Button variant="contained" onClick={logOutHandler}>
+          Log out
+        </Button>
+      </div>
+
       <Popover
         id={id}
         open={open}

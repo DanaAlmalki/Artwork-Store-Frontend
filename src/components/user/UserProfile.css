@@ -1,4 +1,6 @@
 .user-profile {
+  display: flex;
+  flex-direction: column;
   padding: 1em;
 }
 
@@ -6,10 +8,10 @@
   font-weight: bold;
 }
 
-.user-profile button:not(last-of-type) {
-  margin-right: 1em;
-}
-
-.user-profile button {
-  margin-right: 1em;
+.user-profile-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
+  column-gap: 1em;
 }
