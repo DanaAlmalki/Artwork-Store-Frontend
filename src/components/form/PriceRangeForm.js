@@ -1,5 +1,6 @@
 import React from "react";
 import { TextField } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
 
 export default function PriceRange(prop) {
   const { setTempMin, setTempMax, defaultMinPrice, defaultMaxPrice } = prop;
@@ -17,6 +18,7 @@ export default function PriceRange(prop) {
   return (
     <div className="price-range">
       <TextField
+        size="small"
         id="min-price"
         label="Min Price"
         variant="standard"
@@ -25,6 +27,7 @@ export default function PriceRange(prop) {
         defaultValue={defaultMinPrice}
       />
       <TextField
+        size="small"
         id="max-price"
         label="Max Price"
         variant="standard"

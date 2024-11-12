@@ -31,8 +31,8 @@ export default function Form(prop) {
   }
 
   return (
-    <div className="products-search-form-container">
-      <form className="products-search-form" onSubmit={handleSearch}>
+    <form className="products-search-form" onSubmit={handleSearch}>
+      <div className="products-search-feilds">
         <SearchForm setSearchText={setSearchText} label={"Search by name"} />
         <PriceRange
           setTempMin={setTempMin}
@@ -41,10 +41,10 @@ export default function Form(prop) {
           defaultMaxPrice={defaultMaxPrice}
         />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />
-      </form>
-      <Button type="submit" variant="outlined">
+      </div>
+      <Button size="small" type="submit" variant="contained">
         Search
       </Button>
-    </div>
+    </form>
   );
 }
