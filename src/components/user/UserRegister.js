@@ -26,7 +26,7 @@ export default function UserRegister() {
   const [isArtist, setIsArtist] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
-    Name: "",
+    name: "",
     Description: "",
     email: "",
     password: "",
@@ -63,8 +63,8 @@ export default function UserRegister() {
       validationErrors.password = "Password is required.";
     }
     if (isArtist) {
-      if (!userInfo.Name.trim()) {
-        validationErrors.Name = "Name is required for artists.";
+      if (!userInfo.name.trim()) {
+        validationErrors.name = "Name is required for artists.";
       }
       if (!userInfo.Description.trim()) {
         validationErrors.Description = "Description is required for artists.";
@@ -107,11 +107,11 @@ export default function UserRegister() {
         label="Name"
         variant="outlined"
         helperText={isArtist ? "Please enter your display name" : ""}
-        error={Boolean(errors.Name)}
+        error={Boolean(errors.name)}
         required={isArtist}
-        value={userInfo.Name}
+        value={userInfo.name}
         onChange={onChangeHandler}
-        {...(isArtist && errors.Name ? { helperText: errors.Name } : {})}
+        {...(isArtist && errors.name ? { helperText: errors.name } : {})}
       />
       <TextField
         id="email"

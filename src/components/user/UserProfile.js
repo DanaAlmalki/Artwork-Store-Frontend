@@ -6,6 +6,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  DialogContentText,
   CircularProgress,
 } from "@mui/material";
 import Popover from "@mui/material/Popover";
@@ -18,6 +19,7 @@ export default function UserProfile(prop) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const [newUserInfo, setNewUserInfo] = useState({
     name: userData.name || "",
@@ -44,6 +46,11 @@ export default function UserProfile(prop) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleConfirm = () => {
+    logOutHandler();
+    setIsConfirmationOpen(false);
   };
 
   const open = Boolean(anchorEl);
@@ -133,7 +140,7 @@ export default function UserProfile(prop) {
           color="error"
           size="small"
           variant="contained"
-          onClick={logOutHandler}
+          onClick={() => setIsConfirmationOpen(true)}
         >
           Log out
         </Button>
@@ -219,6 +226,18 @@ export default function UserProfile(prop) {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setShowSuccessPopup(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Confirmation Dialog */}
+      <Dialog
+        open={isConfirmationOpen}
+        onClose={() => setIsConfirmationOpen(false)}
+      >
+        <DialogTitle>Log out of this account?</DialogTitle>
+        <DialogActions>
+          <Button onClick={() => setIsConfirmationOpen(false)}>No</Button>
+          <Button onClick={handleConfirm}>Yes</Button>
         </DialogActions>
       </Dialog>
     </div>
