@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/user/ProtectedRoute.js";
 import DashboardPage from "./pages/DashboardPage.js";
 import OrderDashboardPage from "./pages/OrderDashboardPage.js";
 import UserDashboardPage from "./pages/UserDashboardPage.js";
+import CategoriesDashboard from "./components/dashboard/CategoriesDashboard.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -224,30 +225,49 @@ function App() {
               }
             />
           ),
-        },
-        {
-          path: "/order-dashboard",
-          element: (
-            <ProtectedRoute
-              isUserDataLoading={isUserDataLoading}
-              isAuthenticated={isAuthenticated}
-              shouldCheckAdmin={true}
-              userData={userData}
-              element={<OrderDashboardPage />}
-            />
-          ),
-        },
-        {
-          path: "/user-dashboard",
-          element: (
-            <ProtectedRoute
-              isUserDataLoading={isUserDataLoading}
-              isAuthenticated={isAuthenticated}
-              shouldCheckAdmin={true}
-              userData={userData}
-              element={<UserDashboardPage />}
-            />
-          ),
+          children: [
+            {
+              path: "/dashboard/order-dashboard",
+              element: (
+                <ProtectedRoute
+                  isUserDataLoading={isUserDataLoading}
+                  isAuthenticated={isAuthenticated}
+                  shouldCheckAdmin={true}
+                  userData={userData}
+                  element={<OrderDashboardPage />}
+                />
+              ),
+            },
+            {
+              path: "/dashboard/user-dashboard",
+              element: (
+                <ProtectedRoute
+                  isUserDataLoading={isUserDataLoading}
+                  isAuthenticated={isAuthenticated}
+                  shouldCheckAdmin={true}
+                  userData={userData}
+                  element={<UserDashboardPage />}
+                />
+              ),
+            },
+            {
+              path: "/dashboard/category-dashboard",
+              element: (
+                <ProtectedRoute
+                  isUserDataLoading={isUserDataLoading}
+                  isAuthenticated={isAuthenticated}
+                  shouldCheckAdmin={true}
+                  userData={userData}
+                  element={
+                    <CategoriesDashboard
+                      categories={categories}
+                      getCategories={getCategories}
+                    />
+                  }
+                />
+              ),
+            },
+          ],
         },
         {
           path: "/*",
