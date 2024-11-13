@@ -6,10 +6,10 @@ import { Button } from "@mui/material";
 
 export default function UserOrder(prop) {
   const { orderItem } = prop;
-  const [showDetails, setShowDetails] = useState(false); // State to manage visibility
+  const [showDetails, setShowDetails] = useState(false);
 
   const toggleDetails = () => {
-    setShowDetails((prev) => !prev); // Toggle state
+    setShowDetails((prev) => !prev);
   };
 
   return (
@@ -35,7 +35,7 @@ export default function UserOrder(prop) {
         </Button>
       </div>
 
-      {showDetails && ( // Conditionally render based on state
+      {showDetails && (
         <>
           <h3>Order Details</h3>
           <div className="user-order-details-container">

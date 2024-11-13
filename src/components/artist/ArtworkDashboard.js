@@ -22,7 +22,6 @@ export default function ArtworkDashboard(prop) {
   function dateFormatter(timestamp) {
     const date = new Date(timestamp);
 
-    // Format the date to a readable format
     const readableFormat = date.toLocaleString("en-US", {
       year: "numeric",
       month: "2-digit",
