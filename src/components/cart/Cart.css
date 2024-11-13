@@ -1,0 +1,29 @@
+.cart-item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.cart-items-container {
+  padding: 1em;
+  background-color: #f9f9f9;
+  border: 1px solid #d7d6d6;
+  border-radius: 10px;
+}
+
+.cart-item-container {
+  border-bottom: 1px solid #d7d6d6;
+}
+
+.cart-item-container img {
+  width: 10%;
+}
+
+.cart-total {
+  padding: 0.5em;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}

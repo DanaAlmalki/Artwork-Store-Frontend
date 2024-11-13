@@ -18,6 +18,8 @@ export default function Products(prop) {
     defaultMaxPrice,
     wishList,
     setWishList,
+    cartList,
+    setCartList,
     page,
     pageSize,
     handleChange,
@@ -47,6 +49,8 @@ export default function Products(prop) {
                 product={productItem}
                 wishList={wishList}
                 setWishList={setWishList}
+                cartList={cartList}
+                setCartList={setCartList}
               />
             </div>
           );

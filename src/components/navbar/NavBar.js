@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 export default function NavBar(props) {
-  const { wishList, userData, isAuthenticated } = props;
+  const { userData, isAuthenticated } = props;
   return (
     <nav className="navBar">
       <ul>
@@ -16,6 +16,9 @@ export default function NavBar(props) {
         </li>
         <li>
           <Link to="/wishList">Wish List</Link>
+        </li>
+        <li>
+          <Link to="/cart">Cart</Link>
         </li>
         {isAuthenticated ? (
           userData.role === "Admin" ? (

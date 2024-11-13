@@ -18,12 +18,28 @@ import DashboardPage from "./pages/DashboardPage.js";
 import OrderDashboardPage from "./pages/OrderDashboardPage.js";
 import UserDashboardPage from "./pages/UserDashboardPage.js";
 import CategoriesDashboard from "./components/dashboard/CategoriesDashboard.js";
+import CartPage from "./pages/CartPage.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [input, setInput] = useState("");
-  const [wishList, setWishList] = useState([]);
+  // initialize with value from local storage
+  const [wishList, setWishList] = useState(() => {
+    return JSON.parse(localStorage.getItem("wishList")) || [];
+  });
+
+  const [cartList, setCartList] = useState(() => {
+    return JSON.parse(localStorage.getItem("cartList")) || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+  }, [cartList]);
+
+  useEffect(() => {
+    localStorage.setItem("wishList", JSON.stringify(wishList));
+  }, [wishList]);
 
   // Pagination
   const defaultMinPrice = 0;
@@ -172,6 +188,8 @@ function App() {
               defaultMaxPrice={defaultMaxPrice}
               wishList={wishList}
               setWishList={setWishList}
+              cartList={cartList}
+              setCartList={setCartList}
               page={page}
               pageSize={pageSize}
               handleChange={handleChange}
@@ -268,6 +286,10 @@ function App() {
               ),
             },
           ],
+        },
+        {
+          path: "/cart",
+          element: <CartPage cartList={cartList} userData={userData} />,
         },
         {
           path: "/*",

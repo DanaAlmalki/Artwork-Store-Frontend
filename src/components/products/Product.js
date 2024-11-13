@@ -3,17 +3,25 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Heart from "@mui/icons-material/Favorite";
 import Snackbar from "@mui/material/Snackbar";
+import AddCircleIcon from "@mui/icons-material/AddCircleOutline";
+import AddCircleFilledIcon from "@mui/icons-material/AddCircle";
+import { green } from "@mui/material/colors";
 
 import "../products/Product.css";
 import BlueFire from "../../assets/artworks/BlueFire.jpg";
 
 export default function Product(prop) {
-  const { product, wishList, setWishList } = prop;
-  const [isFav, setIsFav] = useState(false);
+  const { product, wishList, setWishList, cartList, setCartList } = prop;
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [isFav, setIsFav] = useState(
+    wishList.some((item) => item.id === product.id)
+  );
+  const [isAdded, setIsAdded] = useState(
+    cartList.some((item) => item.id === product.id)
+  );
 
-  function addToFav(product) {
+  function addToFav() {
     const isIncluded = wishList.some((item) => item.id === product.id);
     if (!isIncluded) {
       setWishList([...wishList, product]);
@@ -21,8 +29,25 @@ export default function Product(prop) {
       setOpen(true);
       setMessage("Product Added to Wishlist");
     } else {
+      setWishList(wishList.filter((item) => item.id !== product.id));
+      setIsFav(false);
       setOpen(true);
-      setMessage("Product already in Wishlist");
+      setMessage("Product removed from Wishlist");
+    }
+  }
+
+  function addToCart() {
+    const isIncluded = cartList.some((item) => item.id === product.id);
+    if (!isIncluded) {
+      setCartList([...cartList, product]);
+      setIsAdded(true);
+      setOpen(true);
+      setMessage("Product Added to cart");
+    } else {
+      setCartList(cartList.filter((item) => item.id !== product.id));
+      setIsAdded(false);
+      setOpen(true);
+      setMessage("Product removed from cart");
     }
   }
 
@@ -32,7 +57,8 @@ export default function Product(prop) {
     }
     setOpen(false);
   };
-
+  console.log(wishList);
+  console.log(cartList);
   return (
     <div>
       <div className="product-container">
@@ -41,9 +67,25 @@ export default function Product(prop) {
           <Heart
             className="favIcon"
             fontSize="large"
-            onClick={() => addToFav(product)}
-            sx={{ color: isFav ? "red" : "#4b4b4bae" }}
+            onClick={() => addToFav()}
+            sx={{ color: isFav ? "red" : "black", cursor: "pointer" }}
           />
+          {isAdded ? (
+            <AddCircleFilledIcon
+              fontSize="large"
+              onClick={() => addToCart()}
+              style={{
+                cursor: "pointer",
+                color: green[500],
+              }}
+            />
+          ) : (
+            <AddCircleIcon
+              fontSize="large"
+              onClick={() => addToCart()}
+              style={{ cursor: "pointer" }}
+            />
+          )}
         </div>
         <Link className="label" to={`${product.id}`}>
           <div className="artist">{product.user.name}</div>
