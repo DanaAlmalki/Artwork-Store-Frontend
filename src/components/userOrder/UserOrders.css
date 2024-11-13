@@ -1,3 +1,15 @@
+.my-orders-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.my-order {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
 .user-order {
   width: 100%;
 }
@@ -22,14 +34,6 @@
 
 .user-order-item-container button {
   height: fit-content;
-}
-
-.my-orders-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  column-gap: 1em;
-  row-gap: 1em;
 }
 
 .user-order-detail-container img {

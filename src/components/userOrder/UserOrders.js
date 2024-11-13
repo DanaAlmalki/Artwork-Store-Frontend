@@ -39,7 +39,7 @@ export default function UserOrders() {
         {myOrders.length === 0 ? (
           <p>There are no orders yet.</p>
         ) : (
-          <div>
+          <div className="my-order">
             {myOrders.map((orderItem) => {
               return (
                 <div key={orderItem.id}>
