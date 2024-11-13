@@ -27,3 +27,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+}
+.cart-list button {
+  align-self: center;
+  margin-top: 1em;
+}
