@@ -8,7 +8,6 @@ import AddCircleFilledIcon from "@mui/icons-material/AddCircle";
 import { green } from "@mui/material/colors";
 
 import "../products/Product.css";
-import BlueFire from "../../assets/artworks/BlueFire.jpg";
 
 export default function Product(prop) {
   const { product, wishList, setWishList, cartList, setCartList } = prop;
@@ -62,7 +61,7 @@ export default function Product(prop) {
   return (
     <div>
       <div className="product-container">
-        <img className="product-image" src={BlueFire} alt="art work" />
+        <img className="product-image" src={product.imageUrl} alt="art work" />
         <div className="product-buttons">
           <Heart
             className="favIcon"

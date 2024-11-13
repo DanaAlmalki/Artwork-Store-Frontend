@@ -77,7 +77,7 @@ export default function OrderDashboard() {
 
   return (
     <div>
-      <h2>Manage Orders</h2>
+      <h2>Orders Dashboard</h2>
       <Paper sx={{ height: 400, width: "100%" }}>
         {loading ? (
           <div>Loading...</div>

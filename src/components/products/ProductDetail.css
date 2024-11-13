@@ -1,0 +1,24 @@
+.product-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1em;
+}
+
+.detail .productImg {
+  width: 50%;
+}
+
+.detail .right {
+  display: flex;
+  flex-direction: column;
+}
+
+.right span {
+  font-weight: bolder;
+}

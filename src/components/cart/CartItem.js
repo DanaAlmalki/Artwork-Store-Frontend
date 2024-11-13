@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import BlueFire from "../../assets/artworks/BlueFire.jpg";
 import "./Cart.css";
 import { Button, TextField } from "@mui/material";
 
@@ -32,7 +31,11 @@ export default function CartItem(prop) {
   return (
     <div>
       <div className="cart-item-container">
-        <img className="cart-item-image" src={BlueFire} alt="art work" />
+        <img
+          className="cart-item-image"
+          src={cartItem.imageUrl}
+          alt="art work"
+        />
         <div className="cart-item-title">
           <Link to={`/products/${cartItem.id}`}>{cartItem.title}</Link>
         </div>

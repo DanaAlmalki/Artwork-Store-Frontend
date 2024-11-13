@@ -1,7 +1,6 @@
 .product-container {
   width: min-content;
   position: relative;
-  outline: 1px solid orange;
 }
 
 .product-container:hover .label {

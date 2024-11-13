@@ -10,23 +10,34 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  align-self: center;
   max-width: 90%;
   min-width: fit-content;
-  outline: 3px solid red;
 }
 
 .dashboard-elements > a {
   max-width: 50%;
   min-width: fit-content;
   margin: 5px;
-  outline: 3px solid cyan;
-  padding: 3em;
+  background-color: #f9f9f9;
+  border: 1px solid #d7d6d6;
+  border-radius: 10px;
+  padding: 2em;
+  text-decoration: none;
 }
 
 .dashboard-elements a div {
-  outline: 3px solid green;
+  background-color: #f9f9f9;
   width: 10ch;
   margin: 1.5em 0;
   text-align: center;
   font-size: medium;
+  color: rgb(0, 0, 0);
+  font-size: large;
+}
+
+.dashboard-elements a:hover,
+.dashboard-elements a:hover * {
+  background-color: #1777d2;
+  color: #fff;
 }

@@ -1,5 +1,4 @@
 .productsContainer {
-  outline: 1px solid green;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,11 +9,12 @@
 }
 
 .products {
-  outline: 1px solid rgb(255, 36, 171);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
+  row-gap: 1em;
   width: 100%;
 }
 

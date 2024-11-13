@@ -4,6 +4,8 @@ import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "./UserLogin.css";
+
 export default function UserLogin(prop) {
   const { userData, getUserData } = prop;
   const url = "http://localhost:5125/api/v1/users/signin";
@@ -95,34 +97,36 @@ export default function UserLogin(prop) {
   }, [userData, navigate]); // Only trigger effect when userData changes
 
   return (
-    <div>
+    <div className="user-login">
       <h1>User Login</h1>
-      <TextField
-        id="email"
-        label="Email"
-        variant="outlined"
-        helperText={errors.email ? errors.email : "Please enter your email"}
-        error={Boolean(errors.email)}
-        required
-        value={userInfo.email}
-        onChange={onChangeHandler}
-      />
-      <TextField
-        id="password"
-        label="Password"
-        variant="outlined"
-        type="password"
-        helperText={
-          errors.password ? errors.password : "Please enter your password"
-        }
-        error={Boolean(errors.password)}
-        required
-        value={userInfo.password}
-        onChange={onChangeHandler}
-      />
-      <Button onClick={loginUser} disabled={loading}>
-        {loading ? <CircularProgress size={24} /> : "Login"}
-      </Button>
+      <div className="login-fields">
+        <TextField
+          id="email"
+          label="Email"
+          variant="outlined"
+          helperText={errors.email ? errors.email : "Please enter your email"}
+          error={Boolean(errors.email)}
+          required
+          value={userInfo.email}
+          onChange={onChangeHandler}
+        />
+        <TextField
+          id="password"
+          label="Password"
+          variant="outlined"
+          type="password"
+          helperText={
+            errors.password ? errors.password : "Please enter your password"
+          }
+          error={Boolean(errors.password)}
+          required
+          value={userInfo.password}
+          onChange={onChangeHandler}
+        />
+        <Button variant="contained" onClick={loginUser} disabled={loading}>
+          {loading ? <CircularProgress size={24} /> : "Login"}
+        </Button>
+      </div>
     </div>
   );
 }

@@ -64,7 +64,7 @@ function App() {
     totalCount: 0,
   });
 
-  const pageSize = 2;
+  const pageSize = 5;
   let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
 
   if (input) {

@@ -76,7 +76,7 @@ export default function UserDashboard() {
 
   return (
     <div className="user-dashboard">
-      <h2>Manage Users</h2>
+      <h2>Users Dashboard</h2>
       <UserSearchForm
         setInput={setInput}
         setSort={setSort}

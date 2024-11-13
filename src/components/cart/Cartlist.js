@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Cartlist(prop) {
   const { cartList, setCartList, userData } = prop;
@@ -59,6 +60,7 @@ export default function Cartlist(prop) {
     setError("");
     setDialogOpen(false);
   }
+  const navigate = useNavigate();
 
   function createOrder(orderData) {
     setLoading(true);
@@ -91,7 +93,12 @@ export default function Cartlist(prop) {
     <div className="cart-list">
       <h2>Cart List</h2>
       {cartList.length === 0 ? (
-        <div>Cart is empty.</div>
+        <div>
+          <div>Your cart is empty.</div>
+          <Button variant="contained" onClick={() => navigate("/products")}>
+            Starting shopping now
+          </Button>
+        </div>
       ) : (
         <div className="cart-items-container">
           {cartList.map((cartItem) => (
@@ -107,11 +114,11 @@ export default function Cartlist(prop) {
             <p>Total:</p>
             <p>$ {totalPrice}</p>
           </div>
+          <Button variant="contained" onClick={() => handleCreateOrder()}>
+            Create Order
+          </Button>
         </div>
       )}
-      <Button variant="contained" onClick={() => handleCreateOrder()}>
-        Create Order
-      </Button>
 
       {/* Dialog for Address Input */}
       <Dialog open={dialogOpen} onClose={handleDialogClose}>

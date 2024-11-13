@@ -83,9 +83,7 @@ export default function CategoriesDashboard(props) {
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        Categories Dashboard
-      </Typography>
+      <h2>Categories Dashboard</h2>
       <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
         <TextField
           label="Category Name"
@@ -105,10 +103,8 @@ export default function CategoriesDashboard(props) {
           {message}
         </Typography>
       )}
-
-      <Typography variant="h5" gutterBottom>
-        Existing Categories
-      </Typography>
+      <br></br>
+      <h3>Existing Categories</h3>
       <List>
         {categories.map((category) => (
           <ListItem key={category.id} disableGutters>

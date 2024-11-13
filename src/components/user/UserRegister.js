@@ -100,63 +100,67 @@ export default function UserRegister() {
   }
 
   return (
-    <div>
+    <div className="sign-in">
       <h1>User Register</h1>
-      <TextField
-        id="name"
-        label="Name"
-        variant="outlined"
-        helperText={isArtist ? "Please enter your display name" : ""}
-        error={Boolean(errors.name)}
-        required={isArtist}
-        value={userInfo.name}
-        onChange={onChangeHandler}
-        {...(isArtist && errors.name ? { helperText: errors.name } : {})}
-      />
-      <TextField
-        id="email"
-        label="Email"
-        variant="outlined"
-        helperText={errors.email || "Please enter your email"}
-        error={Boolean(errors.email)}
-        required
-        value={userInfo.email}
-        onChange={onChangeHandler}
-      />
-      <TextField
-        id="password"
-        label="Password"
-        variant="outlined"
-        type="password"
-        helperText={errors.password || "Please enter a password"}
-        error={Boolean(errors.password)}
-        required
-        value={userInfo.password}
-        onChange={onChangeHandler}
-      />
       <FormControlLabel
         control={<Checkbox checked={isArtist} onChange={handleArtistCheck} />}
         label="Register as an Artist"
       />
-      {isArtist && (
+      <div className="signin-fields">
         <TextField
-          id="Description"
-          label="Description"
+          id="name"
+          label="Name"
           variant="outlined"
-          helperText={
-            errors.Description ||
-            "Provide a short description of yourself as an artist"
-          }
-          error={Boolean(errors.Description)}
+          helperText={isArtist ? "Please enter your display name" : ""}
+          error={Boolean(errors.name)}
+          required={isArtist}
+          value={userInfo.name}
+          onChange={onChangeHandler}
+          {...(isArtist && errors.name ? { helperText: errors.name } : {})}
+        />
+        <TextField
+          id="email"
+          label="Email"
+          variant="outlined"
+          helperText={errors.email || "Please enter your email"}
+          error={Boolean(errors.email)}
           required
-          value={userInfo.Description}
+          value={userInfo.email}
           onChange={onChangeHandler}
         />
-      )}
-      <Button onClick={registerNewUser} disabled={loading}>
+        <TextField
+          id="password"
+          label="Password"
+          variant="outlined"
+          type="password"
+          helperText={errors.password || "Please enter a password"}
+          error={Boolean(errors.password)}
+          required
+          value={userInfo.password}
+          onChange={onChangeHandler}
+        />
+        {isArtist && (
+          <TextField
+            id="Description"
+            label="Description"
+            variant="outlined"
+            helperText={
+              errors.Description ||
+              "Provide a short description of yourself as an artist"
+            }
+            error={Boolean(errors.Description)}
+            required
+            value={userInfo.Description}
+            onChange={onChangeHandler}
+          />
+        )}
+      </div>
+      <Button variant="contained" onClick={registerNewUser} disabled={loading}>
         {loading ? <CircularProgress size={24} /> : "Register"}
       </Button>
-      <Link to="/login">Already have an account?</Link>
+      <div>
+        Already have an account? <Link to="/login">Go to login</Link>
+      </div>
       {/* Success Dialog */}
       <Dialog
         open={showSuccessPopup}
