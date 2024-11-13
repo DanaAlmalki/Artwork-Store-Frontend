@@ -39,7 +39,7 @@ export default function Product(prop) {
   function addToCart() {
     const isIncluded = cartList.some((item) => item.id === product.id);
     if (!isIncluded) {
-      setCartList([...cartList, product]);
+      setCartList([...cartList, { ...product, orderQuantity: 1 }]);
       setIsAdded(true);
       setOpen(true);
       setMessage("Product Added to cart");

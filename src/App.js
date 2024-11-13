@@ -30,7 +30,12 @@ function App() {
   });
 
   const [cartList, setCartList] = useState(() => {
-    return JSON.parse(localStorage.getItem("cartList")) || [];
+    try {
+      return JSON.parse(localStorage.getItem("cartList")) || [];
+    } catch (error) {
+      console.error("Error parsing localStorage data:", error);
+      return [];
+    }
   });
 
   useEffect(() => {
@@ -289,7 +294,13 @@ function App() {
         },
         {
           path: "/cart",
-          element: <CartPage cartList={cartList} userData={userData} />,
+          element: (
+            <CartPage
+              cartList={cartList}
+              setCartList={setCartList}
+              userData={userData}
+            />
+          ),
         },
         {
           path: "/*",

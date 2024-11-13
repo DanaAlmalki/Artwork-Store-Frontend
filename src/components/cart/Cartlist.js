@@ -4,27 +4,39 @@ import CartItem from "./CartItem";
 import "./Cart.css";
 
 export default function Cartlist(prop) {
-  const { cartList, userData } = prop;
+  const { cartList, setCartList, userData } = prop;
+  let totalPrice = 0;
+  let prices = [];
 
-  const prices = cartList.map((product) => product.price);
-  const totalPrice = prices.reduce((acc, curr) => acc + curr);
+  if (cartList.length !== 0) {
+    prices = cartList.map((product) => product.price);
+    totalPrice = prices.reduce((acc, curr) => acc + curr);
+  }
 
   return (
     <div>
       <h2>Cart List</h2>
-      <div className="cart-items-container">
-        {cartList.map((productItem) => {
-          return (
-            <div key={productItem.id}>
-              <CartItem product={productItem} />
-            </div>
-          );
-        })}
-        <div className="cart-total">
-          <p>Total:</p>
-          <p>$ {totalPrice}</p>
+      {cartList.length === 0 ? (
+        <div>Cart is empty.</div>
+      ) : (
+        <div className="cart-items-container">
+          {cartList.map((cartItem) => {
+            return (
+              <div key={cartItem.id}>
+                <CartItem
+                  cartItem={cartItem}
+                  cartList={cartList}
+                  setCartList={setCartList}
+                />
+              </div>
+            );
+          })}
+          <div className="cart-total">
+            <p>Total:</p>
+            <p>$ {totalPrice}</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

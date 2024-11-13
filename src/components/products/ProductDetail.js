@@ -18,6 +18,7 @@ export default function ProductDetail(prop) {
         <p className="description">{product.description}</p>
         <div>${product.price}</div>
         <div>Artist: {product.user.name}</div>
+        <div>Quantity: {product.quantity}</div>
         <button onClick={goBack}>Go Back</button>
       </div>
     </div>
