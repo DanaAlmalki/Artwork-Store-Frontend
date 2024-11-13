@@ -39,10 +39,10 @@ export default function CartItem(prop) {
         <div className="cart-item-title">
           <Link to={`/products/${cartItem.id}`}>{cartItem.title}</Link>
         </div>
-        <div>
-          <Button onClick={() => decreaseQuantity(cartItem.id)}>-</Button>
-          Quantity: {cartItem.orderQuantity}
-          <Button onClick={() => increaseQuantity(cartItem.id)}>+</Button>
+        <div className="cart-item-quantity">
+          <button onClick={() => decreaseQuantity(cartItem.id)}>-</button>
+          <div>Quantity: {cartItem.orderQuantity}</div>
+          <button onClick={() => increaseQuantity(cartItem.id)}>+</button>
         </div>
         <div className="cart-item-price">${cartItem.price}</div>
       </div>

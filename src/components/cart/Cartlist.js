@@ -114,7 +114,11 @@ export default function Cartlist(prop) {
             <p>Total:</p>
             <p>$ {totalPrice}</p>
           </div>
-          <Button variant="contained" onClick={() => handleCreateOrder()}>
+          <Button
+            className="creat-order-button"
+            variant="contained"
+            onClick={() => handleCreateOrder()}
+          >
             Create Order
           </Button>
         </div>
