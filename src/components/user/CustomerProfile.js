@@ -1,5 +1,10 @@
 import React from "react";
+import UserOrders from "../userOrder/UserOrders";
 
 export default function CustomerProfile() {
-  return <div>customer orders, link to wishlist</div>;
+  return (
+    <div>
+      <UserOrders />
+    </div>
+  );
 }

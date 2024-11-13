@@ -77,6 +77,7 @@ export default function Cartlist(prop) {
           alert("You need to be logged in to create an order.");
         }
         if (res.status === 201) {
+          setCartList([]);
           alert("Order created successfully.");
         }
       })
