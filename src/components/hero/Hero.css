@@ -1,0 +1,47 @@
+.hero-section {
+  position: relative;
+  height: 600px;
+  width: 100%;
+}
+
+.hero-section .hero-image {
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(50%);
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.hero-section .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  color: white;
+  inset: 0;
+  margin: auto;
+}
+
+.hero-section .hero-content h3 {
+  font-size: 2em;
+  text-align: center;
+}
+
+.hero-section .hero-content button {
+  width: fit-content;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 1.5em;
+  border: 1px solid white;
+  border-radius: 40px;
+  padding: 0.5em;
+}
+
+.hero-section .hero-content button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

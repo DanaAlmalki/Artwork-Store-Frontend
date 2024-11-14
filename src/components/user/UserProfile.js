@@ -25,7 +25,10 @@ export default function UserProfile(prop) {
     name: userData.name || "",
     email: userData.email || "",
     password: "",
-    description: userData.role === "Artist" ? userData.description || "" : "",
+    description:
+      userData.role === "Artist"
+        ? userData.description || ""
+        : "customer description",
   });
 
   const [errors, setErrors] = useState({
@@ -64,7 +67,7 @@ export default function UserProfile(prop) {
       email: newUserInfo.email.trim() ? newUserInfo.email : userData.email,
       password: newUserInfo.password.trim()
         ? newUserInfo.password
-        : userData.password, // Keep empty password as empty (no update)
+        : userData.password,
       description:
         userData.role === "Artist" && !newUserInfo.description.trim()
           ? userData.description

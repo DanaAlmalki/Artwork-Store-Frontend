@@ -4,5 +4,32 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #97a887;
+  background-color: #ffffff;
+  padding: 0 1em;
+  padding-top: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navBar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.navBar ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.navBar ul li a:hover {
+  text-decoration: none;
+  color: rgb(144, 144, 144);
+}
+
+.navBar img {
+  width: 100px;
 }

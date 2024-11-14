@@ -42,6 +42,10 @@ export default function Cartlist(prop) {
   }
 
   function handleCreateOrder() {
+    if (userData === null) {
+      alert("You need to be logged in to create an order.");
+      return;
+    }
     setDialogOpen(true);
   }
 
@@ -75,15 +79,15 @@ export default function Cartlist(prop) {
       .then((res) => {
         setLoading(false);
         console.log(res);
-        if (res.status === 401) {
-          alert("You need to be logged in to create an order.");
-        }
         if (res.status === 201) {
           setCartList([]);
           alert("Order created successfully.");
         }
       })
       .catch((err) => {
+        if (err.status === 401) {
+          alert("You need to be logged in to create an order.");
+        }
         setLoading(false);
         console.log(err);
       });
