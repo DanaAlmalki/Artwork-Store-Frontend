@@ -8,7 +8,7 @@ import "./UserLogin.css";
 
 export default function UserLogin(prop) {
   const { userData, getUserData } = prop;
-  const url = "http://localhost:5125/api/v1/users/signin";
+  const url = "https://artify-store-backend.onrender.com/api/v1/users/signin";
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",

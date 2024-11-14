@@ -17,7 +17,7 @@ export default function ArtworkDashboard(prop) {
   const [selectedRow, setSelectedRow] = useState(null); // To store the selected row's data
   const [dialogType, setDialogType] = useState(null); // State to track the dialog type (create or modify)
 
-  let artworkUrl = `http://localhost:5125/api/v1/Artworks/artist/${userData.id}`;
+  let artworkUrl = `https://artify-store-backend.onrender.com/api/v1/Artworks/artist/${userData.id}`;
 
   function dateFormatter(timestamp) {
     const date = new Date(timestamp);

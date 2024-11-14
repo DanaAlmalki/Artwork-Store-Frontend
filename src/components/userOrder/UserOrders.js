@@ -7,7 +7,8 @@ import "./UserOrders.css";
 export default function UserOrders() {
   const [myOrders, setMyOrders] = useState([]);
   const [loading, setLoading] = useState(false);
-  const ordersUrl = "http://localhost:5125/api/v1/orders/my-orders";
+  const ordersUrl =
+    "https://artify-store-backend.onrender.com/api/v1/orders/my-orders";
 
   function getMyOrders() {
     setLoading(true);

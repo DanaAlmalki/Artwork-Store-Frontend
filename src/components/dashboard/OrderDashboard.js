@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 export default function OrderDashboard() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
-  const ordersUrl = "http://localhost:5125/api/v1/orders";
+  const ordersUrl = "https://artify-store-backend.onrender.com/api/v1/orders";
 
   function dateFormatter(timestamp) {
     const date = new Date(timestamp);

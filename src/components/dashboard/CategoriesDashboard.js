@@ -32,7 +32,7 @@ export default function CategoriesDashboard(props) {
       if (categoryId) {
         await axios
           .put(
-            `http://localhost:5125/api/v1/categories/${categoryId}`,
+            `https://artify-store-backend.onrender.com/api/v1/categories/${categoryId}`,
             categoryData,
             {
               headers: {
@@ -49,11 +49,15 @@ export default function CategoriesDashboard(props) {
         handleClose(); // Close the dialog on success
       } else {
         axios
-          .post("http://localhost:5125/api/v1/categories", categoryData, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .post(
+            "https://artify-store-backend.onrender.com/api/v1/categories",
+            categoryData,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then((response) => {
             if (response.status === 201) {
               setMessage("Category created successfully!");

@@ -58,11 +58,14 @@ export default function ArtworkDetail(prop) {
   function deleteArtwork() {
     const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:5125/api/v1/Artworks/${artwork.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .delete(
+        `https://artify-store-backend.onrender.com/api/v1/Artworks/${artwork.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         if (response.status === 204) {
           setIsLoading(false);
@@ -135,15 +138,19 @@ export default function ArtworkDetail(prop) {
 
     const apiRequest = artwork
       ? axios.put(
-          `http://localhost:5125/api/v1/Artworks/${artwork.id}`,
+          `https://artify-store-backend.onrender.com/api/v1/Artworks/${artwork.id}`,
           formData,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-      : axios.post(`http://localhost:5125/api/v1/Artworks`, formData, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+      : axios.post(
+          `https://artify-store-backend.onrender.com/api/v1/Artworks`,
+          formData,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
     apiRequest
       .then((response) => {

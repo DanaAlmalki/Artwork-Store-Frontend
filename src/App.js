@@ -65,7 +65,7 @@ function App() {
   });
 
   const pageSize = 5;
-  let productUrl = `http://localhost:5125/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
+  let productUrl = `https://artify-store-backend.onrender.com/api/v1/Artworks?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
 
   if (input) {
     productUrl += `&Search=${input}`;
@@ -108,7 +108,7 @@ function App() {
     setIsUserDataLoading(true);
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:5125/api/v1/users/profile", {
+      .get("https://artify-store-backend.onrender.com/api/v1/users/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -134,7 +134,7 @@ function App() {
   function getCategories() {
     setIsCatLoading(true);
     axios
-      .get("http://localhost:5125/api/v1/Categories")
+      .get("https://artify-store-backend.onrender.com/api/v1/Categories")
       .then((response) => {
         setCategories(response.data);
         setIsCatLoading(false);

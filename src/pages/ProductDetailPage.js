@@ -10,7 +10,7 @@ export default function ProductDetailPage() {
   const params = useParams();
   let productId = params.productId;
 
-  const url = `http://localhost:5125/api/v1/Artworks/${productId}`;
+  const url = `https://artify-store-backend.onrender.com/api/v1/Artworks/${productId}`;
 
   const [product, setProduct] = useState();
   const [loading, setLoading] = useState(true);

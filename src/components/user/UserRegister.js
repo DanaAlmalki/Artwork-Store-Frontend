@@ -15,7 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function UserRegister() {
-  const url = "http://localhost:5125/api/v1/users";
+  const url = "https://artify-store-backend.onrender.com/api/v1/users";
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",

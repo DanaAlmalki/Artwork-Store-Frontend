@@ -43,11 +43,14 @@ export default function DataTable(prop) {
     setOpen(false);
     const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:5125/api/v1/users/${selectedID}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .delete(
+        `https://artify-store-backend.onrender.com/api/v1/users/${selectedID}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         if (res.status === 204) {

@@ -68,7 +68,8 @@ export default function Cartlist(prop) {
 
   function createOrder(orderData) {
     setLoading(true);
-    const orderUrl = "http://localhost:5125/api/v1/Orders/add";
+    const orderUrl =
+      "https://artify-store-backend.onrender.com/api/v1/Orders/add";
     const token = localStorage.getItem("token");
     axios
       .post(orderUrl, orderData, {

@@ -23,7 +23,7 @@ export default function UserDashboard() {
     totalCount: 0,
   });
 
-  let userUrl = `http://localhost:5125/api/v1/Users?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
+  let userUrl = `https://artify-store-backend.onrender.com/api/v1/Users?PageSize=${pageSize}&PageNumber=${page}&SortOrder=${sort}`;
 
   if (input) {
     userUrl += `&Search=${input}`;

@@ -91,11 +91,15 @@ export default function UserProfile(prop) {
     setLoading(true);
     const token = localStorage.getItem("token");
     axios
-      .put("http://localhost:5125/api/v1/users/profile", updatedUserInfo, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .put(
+        "https://artify-store-backend.onrender.com/api/v1/users/profile",
+        updatedUserInfo,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         setUserData(response.data);
         setAnchorEl(null);
