@@ -4,7 +4,7 @@ import "./Hero.css";
 import heroImg from "../../assets/hero-modified.jpg";
 import { useNavigate } from "react-router-dom";
 
-export default function hero() {
+export default function Hero() {
   const navigate = useNavigate();
   return (
     <div className="hero-section">
