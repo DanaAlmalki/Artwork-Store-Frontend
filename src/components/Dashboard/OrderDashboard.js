@@ -88,7 +88,7 @@ export default function OrderDashboard() {
             initialState={{
               pagination: { paginationModel: { pageSize: 5 } },
             }}
-            pageSizeOptions={[5, 10]}
+            pageSizeOptions={[3, 5, 10]}
             isRowSelectable={(params) => params.row.role !== "Admin"}
             sx={{ border: 0 }}
           />

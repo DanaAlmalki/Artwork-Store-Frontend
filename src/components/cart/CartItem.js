@@ -28,6 +28,10 @@ export default function CartItem(prop) {
     setCartList(newCartList);
   }
 
+  function removeFromCart() {
+    setCartList(cartList.filter((item) => item.id !== cartItem.id));
+  }
+
   return (
     <div>
       <div className="cart-item-container">
@@ -45,6 +49,7 @@ export default function CartItem(prop) {
           <button onClick={() => increaseQuantity(cartItem.id)}>+</button>
         </div>
         <div className="cart-item-price">${cartItem.price}</div>
+        <button onClick={removeFromCart}>X</button>
       </div>
     </div>
   );

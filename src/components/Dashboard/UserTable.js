@@ -106,7 +106,7 @@ export default function DataTable(prop) {
             initialState={{
               pagination: { paginationModel: { pageSize: 5 } },
             }}
-            pageSizeOptions={[5, 10]}
+            pageSizeOptions={[3, 5, 10]}
             onPaginationModelChange={handlePaginationChange}
             disableColumnFilter
             disableColumnMenu
